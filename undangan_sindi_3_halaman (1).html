@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Undangan Icha & Rezza</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        krem: '#fcf9f2',
+                        maroon: '#781D42',
+                        hijautua: '#2D4A22',
+                    },
+                    fontFamily: {
+                        hand: ['Caveat', 'cursive'],
+                        typewriter: ['"Courier Prime"', 'monospace'],
+                        script: ['"Dancing Script"', 'cursive']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #fcf9f2;
+            background-image: radial-gradient(#e5d8bc 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: #2D4A22;
+            min-height: 100vh;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* Gacor Fade-in-up Animation */
+        @keyframes fadeInUp {
+            0% { 
+                opacity: 0; 
+                transform: translateY(30px); 
+            }
+            100% { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+        /* Page Transitions */
+        .page-container {
+            display: none;
+            opacity: 0;
+            min-height: 100vh;
+            width: 100%;
+            padding-bottom: 2rem;
+        }
+        
+        .page-active {
+            display: block;
+            /* Terapkan animasi ke setiap halaman yang aktif */
+            animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #781D42; border-radius: 10px; }
+
+        /* Polaroid Style */
+        .polaroid {
+            background: #fff;
+            padding: 8px 8px 30px 8px;
+            box-shadow: 2px 4px 10px rgba(0,0,0,0.1);
+            position: relative;
+            display: inline-block;
+        }
+        
+        /* Tape Effect */
+        .tape {
+            background-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            width: 60px;
+            height: 20px;
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-4deg);
+            backdrop-filter: blur(2px);
+            z-index: 10;
+        }
+
+        /* Scribbles and Separators */
+        .separator {
+            width: 80%;
+            height: 2px;
+            margin: 2rem auto;
+            background: repeating-linear-gradient(to right, #781D42, #781D42 5px, transparent 5px, transparent 10px);
+            opacity: 0.5;
+        }
+
+        /* Envelope */
+        .envelope {
+            background: #fff;
+            border: 2px dashed #2D4A22;
+            border-radius: 8px;
+            position: relative;
+        }
+        .envelope::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 50%;
+            border-bottom: 2px dashed #2D4A22;
+            border-radius: 8px 8px 50% 50%;
+        }
+
+        /* Animasi Photobooth */
+        @keyframes autoSlide {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        .animate-auto-slide {
+            animation: autoSlide 4s ease-in-out infinite;
+        }
+        .animate-auto-slide:hover {
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+<body class="font-typewriter antialiased">
+
+    <!-- Audio Element & Floating Button -->
+    <audio id="bg-music" loop>
+        <!-- Ganti src dengan link atau path file audio mp3 lu -->
+        <source src="audio/nadif.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="audio-btn" onclick="toggleAudio()" class="fixed bottom-6 right-6 bg-hijautua text-white p-3 md:p-4 rounded-full shadow-lg z-50 hidden hover:bg-maroon transition-colors border-2 border-dashed border-krem">
+        <i id="audio-icon" class="fas fa-music animate-pulse text-lg md:text-xl"></i>
+    </button>
+
+    <main class="w-full">
+
+        <!-- ==================== PAGE 1: COVER ==================== -->
+        <div id="page1" class="page-container page-active">
+            <div class="max-w-md mx-auto flex flex-col items-center justify-center p-6 text-center min-h-screen relative">
+                <h2 class="font-hand text-3xl text-maroon mb-2">Akhirnya...</h2>
+                <h1 class="font-script text-4xl md:text-5xl font-bold text-hijautua mb-8">KAMI MENIKAH</h1>
+                
+                <div class="flex justify-center gap-4 mb-6 relative w-full">
+                        <img src="img/img-1.png" alt="Dewi">
+                </div>
+
+                <h2 class="font-script text-5xl md:text-6xl text-maroon my-6">Dewi & Syahrul</h2>
+
+                <div class="mt-8 animate-bounce">
+                    <p class="font-hand text-2xl text-hijautua mb-2">You're invited</p>
+                    <button onclick="goToPage('page2')" class="bg-hijautua text-white font-sans text-sm tracking-widest uppercase px-6 py-3 rounded-full shadow-lg border border-white hover:bg-maroon transition-colors">
+                        Buka Detail Undangan
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== PAGE 2: DETAILS ==================== -->
+        <div id="page2" class="page-container p-6 text-center">
+            <div class="max-w-md mx-auto">
+                <div class="pt-8 pb-4">
+                    <img src="img/bismillah.png" alt="Bismillah" class="h-8 mx-auto opacity-70 mb-4" style="filter: invert(24%) sepia(16%) saturate(2333%) hue-rotate(69deg) brightness(97%) contrast(89%);">
+                    <p class="text-xs md:text-sm leading-relaxed italic px-4">
+                        "Dan di antara tanda-tanda kekuasaan-Nya, Dia menciptakan untukmu istri-istri dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya..."
+                    </p>
+                    <p class="font-bold text-xs md:text-sm text-maroon mt-2">— QS. Ar-Rum: 21</p>
+                </div>
+
+                <div class="separator"></div>
+
+                <h2 class="font-hand text-3xl md:text-4xl text-maroon mb-6">Mempelai</h2>
+                
+                <div class="space-y-8 relative">
+                    <!-- Groom -->
+                    <div class="flex flex-col items-center">
+                        <div class="w-24 h-24 md:w-28 md:h-28 rounded-full p-1 border-2 border-dashed border-maroon mb-2 bg-white">
+                            <img src="img/pengantin-pria.jpeg" alt="Groom" class="w-full h-full rounded-full object-cover">
+                        </div>
+                        <h3 class="font-script text-3xl md:text-4xl font-bold text-hijautua">Moch Syahrul Fadillah</h3>
+                    </div>
+                    
+                    <div class="text-maroon text-2xl md:text-3xl font-hand">&</div>
+
+                    <!-- Bride -->
+                    <div class="flex flex-col items-center">
+                        <div class="w-24 h-24 md:w-28 md:h-28 rounded-full p-1 border-2 border-dashed border-maroon mb-2 bg-white">
+                            <img src="img/pengantin-wanita.jpeg" alt="Bride" class="w-full h-full rounded-full object-cover">
+                        </div>
+                        <h3 class="font-script text-3xl md:text-4xl font-bold text-hijautua">Dewi Lestari Ginanjar</h3>
+                    </div>
+                </div>
+
+                <div class="separator"></div>
+
+                <!-- Save the Date -->
+                <div class="bg-white/60 p-4 md:p-6 rounded-xl border border-hijautua/20 shadow-sm mb-6">
+                    <h3 class="font-hand text-3xl md:text-4xl text-maroon mb-2">Save the Date</h3>
+                    <p class="font-bold text-lg md:text-xl mb-2">November 2026</p>
+                    <div class="flex justify-center gap-4 text-sm md:text-base mb-2">
+                        <div class="flex flex-col items-center opacity-70"><span class="text-[10px] md:text-xs">Rab</span><span>04</span></div>
+                        <div class="flex flex-col items-center text-maroon font-bold scale-110 border-b-2 border-maroon"><span class="text-[10px] md:text-xs">Kam</span><span class="text-xl md:text-2xl">05</span></div>
+                        <div class="flex flex-col items-center opacity-70"><span class="text-[10px] md:text-xs">Jum</span><span>06</span></div>
+                    </div>
+                </div>
+
+                <!-- Timeline -->
+                <h3 class="font-hand text-3xl md:text-4xl text-maroon mb-4">Timeline</h3>
+                <div class="flex justify-center gap-6 mb-8 text-left max-w-[250px] mx-auto border-l-2 border-dashed border-hijautua pl-6 relative">
+                    <div class="absolute w-3 h-3 bg-hijautua rounded-full -left-[7px] top-2"></div>
+                    <div class="mb-4">
+                        <h4 class="font-bold">Rabu, 04 November 2026 <br> 13:00 WIB</h4>
+                        <p class="text-sm">Akad Nikah</p>
+                    </div>
+                </div>
+                <div class="flex justify-center gap-6 mb-8 text-left max-w-[250px] mx-auto border-l-2 border-dashed border-hijautua pl-6 relative">
+                    <div class="absolute w-3 h-3 bg-maroon rounded-full -left-[7px] top-2"></div>
+                    <div>
+                        <h4 class="font-bold">Kamis, 05 November 2026 <br> 09:00 - Selesai</h4>
+                        <p class="text-sm">Resepsi</p>
+                    </div>
+                </div>
+
+                <!-- Venue -->
+                <div class="bg-[#f2ead3] p-4 md:p-5 rounded-xl border border-dashed border-maroon mb-8 relative">
+                    <i class="fas fa-thumbtack absolute -top-3 left-1/2 -translate-x-1/2 text-xl text-maroon drop-shadow"></i>
+                    <h3 class="font-hand text-3xl md:text-4xl text-maroon mt-2 mb-2">Venue</h3>
+                    <p class="text-xs md:text-sm mb-4">Kp. Pasir Peer Rt 004 Rw 003 Desa Mekarmulya Kec Pasirkuda Kab Cianjur</p>
+                    <a href="https://maps.app.goo.gl/tmX1zKv7vUT2ku7s9" class="inline-block bg-hijautua text-white font-sans text-xs md:text-sm px-4 py-2 rounded-full hover:bg-maroon transition-colors"><i class="fas fa-map-marker-alt mr-1"></i> Buka Gmaps</a>
+                </div>
+
+                <div class="flex justify-between px-2 mt-8">
+                    <button onclick="goToPage('page1')" class="text-xs md:text-sm font-sans text-gray-500 underline hover:text-maroon transition-colors"><i class="fas fa-chevron-left"></i> Kembali</button>
+                    <button onclick="goToPage('page3')" class="bg-maroon text-white font-sans text-sm px-6 py-2 rounded-full shadow hover:bg-hijautua transition-colors">Cerita Kami <i class="fas fa-chevron-right ml-1"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== PAGE 3: STORY & RSVP ==================== -->
+        <div id="page3" class="page-container p-6">
+            <div class="max-w-md mx-auto">
+                <!-- Our Story -->
+                <div class="pt-8 mb-10">
+                    <h2 class="font-hand text-4xl md:text-5xl text-maroon text-center mb-6">Our Story</h2>
+                    <div class="bg-white/80 p-5 md:p-6 rounded-lg border border-maroon/20 shadow-sm text-sm md:text-base leading-relaxed text-justify space-y-4 font-sans relative">
+                        <i class="fas fa-quote-left absolute -top-3 -left-2 text-2xl text-maroon/40 bg-krem rounded-full p-1"></i>
+                        
+                        <p>Tidak pernah kami tahu, bahwa sebuah pertemuan sederhana akan membawa kami sampai sejauh ini. Dari rasa yang tumbuh perlahan, kami mulai mengerti bahwa mencintai bukan hanya tentang ingin memiliki, tetapi tentang kesediaan untuk bertahan, menunggu, dan memperjuangkan seseorang dengan sepenuh hati.</p>
+                        
+                        <p>Jarak kemudian menjadi bagian dari perjalanan kami. Ada rindu yang hanya dapat disampaikan melalui suara, ada pertemuan yang harus menunggu waktu, dan ada hari-hari ketika kami hanya mampu saling menguatkan dari tempat yang berbeda. Namun dari jarak itu, kami belajar bahwa cinta bukan hanya tentang kedekatan, melainkan tentang percaya dan tetap memilih satu sama lain, meski tak selalu dapat bersama.</p>
+                        
+                        <p>Di sisi lain, ada seorang laki-laki yang terus berusaha menata hidupnya. Bekerja, berjuang, dan mempersiapkan masa depan, bukan kerana semuanya telah sempurna, tetapi kerana ada satu niat yang ingin ia tunaikan: datang kepadanya dengan kesungguhan, bukan sekadar membawa cinta, tetapi membawa niat untuk menikah.</p>
+                        
+                        <p>Tidak semua lelah sempat diceritakan, tidak semua perjuangan mampu terlihat. Namun setiap langkah, setiap penantian, dan setiap doa perlahan membawa kami menuju satu kepastian. Hingga akhirnya kami sampai di titik ini, bukan kerana perjalanan kami selalu mudah, tetapi kerana kami percaya, sesuatu yang diperjuangkan dengan tulus akan menemukan jalannya.</p>
+                        
+                        <p>Dan kini, setelah sekian lama menunggu, kami tidak lagi hanya ingin bertemu saat rindu datang. Kami ingin pulang ke rumah yang sama, berjalan dalam satu arah, saling menggenggam dalam suka dan duka, serta menemani satu sama lain hingga akhir usia.</p>
+                        
+                        <i class="fas fa-heart text-maroon text-center block mt-4 animate-pulse"></i>
+                    </div>
+                </div>
+
+                <!-- Photobooth Strip -->
+                <div class="flex justify-center mb-10 overflow-hidden">
+                    <div class="bg-hijautua p-3 pb-6 rounded-sm shadow-xl rotate-2 w-48 md:w-56 transition-transform hover:rotate-0">
+                        <!-- Container foto dengan animasi bergeser -->
+                        <div class="space-y-2 animate-auto-slide">
+                            <img src="img/1.jpeg" class="w-full h-24 md:h-32 object-cover border-2 border-white grayscale hover:grayscale-0 transition-all duration-300 hover:scale-125 relative hover:z-10 cursor-pointer shadow-sm hover:shadow-lg">
+                            <img src="img/2.jpeg" class="w-full h-24 md:h-32 object-cover border-2 border-white grayscale hover:grayscale-0 transition-all duration-300 hover:scale-125 relative hover:z-10 cursor-pointer shadow-sm hover:shadow-lg">
+                            <img src="img/3.jpeg" class="w-full h-24 md:h-32 object-cover border-2 border-white grayscale hover:grayscale-0 transition-all duration-300 hover:scale-125 relative hover:z-10 cursor-pointer shadow-sm hover:shadow-lg">
+                        </div>
+                        <p class="font-hand text-white text-center text-xl md:text-2xl mt-3 relative z-20">Icha & Rezza</p>
+                    </div>
+                </div>
+
+                <!-- Gifts / Envelope -->
+<div class="text-center mb-10">
+    <h2 class="font-hand text-3xl md:text-4xl text-maroon mb-2">A Few Notes from Us</h2>
+    <span class="text-[10px] md:text-xs bg-maroon text-white px-2 py-1 rounded">#Gifts</span>
+    
+    <!-- Envelope BRI -->
+    <div class="envelope p-6 mt-4 w-64 md:w-72 mx-auto text-center shadow-md">
+        <!-- Ganti src ieu kana lokasi file logo BRI anjeun -->
+        <img src="img/bri.jpg" alt="Logo BRI" class="w-16 h-auto mx-auto mb-2 object-contain">
+        <h3 class="font-bold text-lg md:text-xl">BRI</h3>
+        <p class="font-typewriter text-sm md:text-base tracking-widest bg-gray-100 p-1 rounded my-1">4086 0102 9643 502</p>
+        <p class="text-xs md:text-sm italic mb-3">a.n Dewi Lestari Ginanjar</p>
+        <button class="text-xs bg-hijautua text-white px-3 py-1 rounded-full hover:bg-maroon transition-colors"><i class="far fa-copy"></i> Salin</button>
+    </div>
+    
+    <!-- Envelope Dana -->
+    <div class="envelope p-6 mt-4 w-64 md:w-72 mx-auto text-center shadow-md">
+        <!-- Ganti src ieu kana lokasi file logo Dana anjeun -->
+        <img src="img/dana.jpg" alt="Logo Dana" class="w-16 h-auto mx-auto mb-2 object-contain">
+        <h3 class="font-bold text-lg md:text-xl">Dana</h3>
+        <p class="font-typewriter text-sm md:text-base tracking-widest bg-gray-100 p-1 rounded my-1">0857 0322 5256</p>
+        <p class="text-xs md:text-sm italic mb-3">a.n Moch Syahrul Ginanjar</p>
+        <button class="text-xs bg-hijautua text-white px-3 py-1 rounded-full hover:bg-maroon transition-colors"><i class="far fa-copy"></i> Salin</button>
+    </div>
+</div>
+
+                <!-- RSVP -->
+                <div class="bg-white/80 p-5 md:p-6 rounded-lg border border-maroon/20 shadow-sm mb-10">
+                    <h2 class="font-hand text-3xl md:text-4xl text-maroon text-center mb-4">RSVP</h2>
+                    <form class="space-y-3 font-sans text-sm md:text-base">
+                        <input type="text" placeholder="Nama Anda" class="w-full p-2 border-b border-maroon bg-transparent focus:outline-none">
+                        <div class="flex gap-2">
+                            <label class="flex-1 bg-green-50 p-2 rounded text-center border border-green-200 text-green-700 cursor-pointer hover:bg-green-100 transition-colors">
+                                <input type="radio" name="rsvp" class="hidden"> ✅ Hadir
+                            </label>
+                            <label class="flex-1 bg-red-50 p-2 rounded text-center border border-red-200 text-red-700 cursor-pointer hover:bg-red-100 transition-colors">
+                                <input type="radio" name="rsvp" class="hidden"> ❌ Maaf
+                            </label>
+                        </div>
+                        <textarea placeholder="Ucapan / Doa..." rows="2" class="w-full p-2 border border-maroon/30 rounded bg-transparent focus:outline-none"></textarea>
+                        <button type="button" class="w-full bg-maroon text-white py-2 rounded-full font-bold hover:bg-hijautua transition-colors">Kirim RSVP</button>
+                    </form>
+                </div>
+
+                <!-- Countdown -->
+                <div class="text-center mb-8">
+                    <h3 class="font-hand text-3xl md:text-4xl text-hijautua mb-4">Counting Days</h3>
+                    <div class="flex justify-center gap-2 text-maroon font-bold bg-white p-3 md:p-4 rounded-lg border-2 border-dashed border-hijautua/30">
+                        <div class="text-center w-12 md:w-16"><div id="days" class="text-xl md:text-2xl">00</div><div class="text-[10px] md:text-xs font-sans">Hari</div></div>:
+                        <div class="text-center w-12 md:w-16"><div id="hours" class="text-xl md:text-2xl">00</div><div class="text-[10px] md:text-xs font-sans">Jam</div></div>:
+                        <div class="text-center w-12 md:w-16"><div id="mins" class="text-xl md:text-2xl">00</div><div class="text-[10px] md:text-xs font-sans">Mnt</div></div>:
+                        <div class="text-center w-12 md:w-16"><div id="secs" class="text-xl md:text-2xl">00</div><div class="text-[10px] md:text-xs font-sans">Dtk</div></div>
+                    </div>
+                    <!-- Tanggal text disesuaikan -->
+                    <p class="text-[10px] md:text-xs mt-2 text-hijautua tracking-widest font-sans">05.11.2026</p>
+                </div>
+
+                <div class="text-center pb-6">
+                    <button onclick="goToPage('page2')" class="text-xs md:text-sm font-sans text-gray-500 underline mb-4 hover:text-maroon transition-colors">Kembali ke Detail</button>
+                    <p class="text-[10px] md:text-xs font-sans text-gray-400">Created by Valoza Rifaldi</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // ==========================================
+        // 1. SETUP AUDIO & LOGIC
+        // ==========================================
+        let isPlaying = false;
+        const bgMusic = document.getElementById('bg-music');
+        const audioBtn = document.getElementById('audio-btn');
+        const audioIcon = document.getElementById('audio-icon');
+
+        // Fungsi Play & Pause Manual
+        function toggleAudio() {
+            if (isPlaying) {
+                bgMusic.pause();
+                audioIcon.classList.remove('fa-music', 'animate-pulse');
+                audioIcon.classList.add('fa-volume-mute');
+            } else {
+                bgMusic.play();
+                audioIcon.classList.remove('fa-volume-mute');
+                audioIcon.classList.add('fa-music', 'animate-pulse');
+            }
+            isPlaying = !isPlaying;
+        }
+
+        // Fungsi khusus pikeun muterkeun otomatis pas pindah halaman
+        function playAutoMusic() {
+            if (!isPlaying) {
+                bgMusic.play().then(() => {
+                    isPlaying = true;
+                    audioBtn.classList.remove('hidden'); // Munculkeun tombol pause/play
+                    audioIcon.classList.remove('fa-volume-mute');
+                    audioIcon.classList.add('fa-music', 'animate-pulse');
+                }).catch(err => console.log("Audio play diblokir ku browser: ", err));
+            }
+        }
+
+        // ==========================================
+        // 2. PAGE NAVIGATION LOGIC
+        // ==========================================
+        function goToPage(targetPageId) {
+            // Sembunyikeun sadaya halaman
+            const pages = document.querySelectorAll('.page-container');
+            pages.forEach(page => {
+                page.classList.remove('page-active');
+                page.style.display = 'none';
+            });
+
+            // Tembongkeun halaman target
+            const targetPage = document.getElementById(targetPageId);
+            targetPage.style.display = 'block';
+            
+            // Trigger reflow pikeun mastikeun animasi jalan mulus
+            void targetPage.offsetWidth; 
+            targetPage.classList.add('page-active');
+            
+            // Scroll ka luhur
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // ----- TRIGGER AUDIO OTOMATIS SAAT PINDAH HALAMAN -----
+            if (targetPageId === 'page2') {
+                playAutoMusic();
+            }
+        }
+
+        // ==========================================
+        // 3. COUNTDOWN TIMER LOGIC
+        // ==========================================
+        // Target: 5 November 2026, 09:00:00
+        const countDownDate = new Date("Nov 5, 2026 09:00:00").getTime();
+
+        const x = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = countDownDate - now;
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("days").innerHTML = "00";
+                document.getElementById("hours").innerHTML = "00";
+                document.getElementById("mins").innerHTML = "00";
+                document.getElementById("secs").innerHTML = "00";
+                return;
+            }
+
+            document.getElementById("days").innerHTML = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+            document.getElementById("hours").innerHTML = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+            document.getElementById("mins").innerHTML = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+            document.getElementById("secs").innerHTML = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
+        }, 1000);
+    </script>
+</body>
+</html>
